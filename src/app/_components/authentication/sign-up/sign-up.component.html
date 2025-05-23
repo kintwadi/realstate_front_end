@@ -1,0 +1,37 @@
+<div class="register-container">
+    <h2>Register</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+    </div>
+
+    <form (ngSubmit)="onRegisterSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="registrationRequest.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="registrationRequest.email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" [(ngModel)]="registrationRequest.password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone (Optional):</label>
+            <input type="tel" id="phone" [(ngModel)]="registrationRequest.phone" name="phone">
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a routerLink="/authentication">Login here</a></p>
+</div>
