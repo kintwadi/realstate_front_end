@@ -17,7 +17,7 @@ import { ToggleService } from './common/sidebar/toggle.service';
 export class AppComponent {
 
     // Title
-    title = 'Daxa - Angular 19 Material Design Admin Dashboard Template';
+    title = 'Imovel';
 
     // isSidebarToggled
     isSidebarToggled = false;

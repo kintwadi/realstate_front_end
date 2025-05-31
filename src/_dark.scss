@@ -1,7 +1,7 @@
 .dark-theme {
     background-color: #131920;
     color: var(--whiteColor);
-
+    @import 'assets/css/dark-style';
     // Default Variable
     --mat-ripple-color: rgba(255, 255, 255, 0.1);
     --mat-option-label-text-color: rgba(255, 255, 255, 0.87);
@@ -213,7 +213,7 @@
                             .input-search {
                                 background: rgba(255, 255, 255, .07);
                                 color: var(--whiteColor);
-                                
+
                                 &::placeholder {
                                     color: rgba(255, 255, 255, .50);
                                 }
@@ -241,7 +241,7 @@
                             .input-search {
                                 background: rgba(255, 255, 255, .07);
                                 color: var(--whiteColor);
-                                
+
                                 &::placeholder {
                                     color: rgba(255, 255, 255, .50);
                                 }
@@ -256,7 +256,7 @@
                             .mat-mdc-button {
                                 color: var(--whiteColor);
                                 border-color: rgba(255, 255, 255, 0.09);
-                                
+
                                 &.active {
                                     border-color: var(--daxaColor);
                                 }
@@ -361,7 +361,7 @@
 
                     .NgxEditor__Content {
                         color: var(--whiteColor);
-                        
+
                         .NgxEditor__Placeholder {
                             &::before {
                                 color: rgba(255, 255, 255, .50);
@@ -425,7 +425,7 @@
                     }
                     .mat-mdc-footer-row {
                         color: var(--whiteColor);
-                        
+
                         .mdc-data-table__cell {
                             border-color: rgba(255, 255, 255, 0.09);
                         }
@@ -512,7 +512,7 @@
     // Pagination
     .mat-mdc-paginator {
         --mat-paginator-disabled-icon-color: rgba(255, 255, 255, 0.12);
-        
+
         .mat-mdc-paginator-outer-container {
             .mat-mdc-paginator-container {
                 .mat-mdc-paginator-page-size-label {
@@ -558,7 +558,7 @@
                     background-color: #1b232d;
                     color: rgba(255, 255, 255, .50);
                     border-color: rgba(255, 255, 255, 0.09);
-    
+
                     &.active {
                         border-color: var(--daxaColor);
                         background-color: var(--daxaColor);
@@ -582,10 +582,10 @@
         .breadcrumb {
             .breadcrumb-item {
                 color: rgba(255, 255, 255, .50);
-                
+
                 a {
                     color: rgba(255, 255, 255, .50);
-    
+
                     &:hover {
                         color: var(--daxaColor);
                     }
@@ -684,7 +684,7 @@
             [class*=owl-] {
                 color: var(--whiteColor);
                 background-color: var(--blackColor);
-                
+
                 &:hover {
                     color: var(--whiteColor);
                     background: var(--daxaColor);
@@ -860,7 +860,7 @@
         .mat-mdc-option {
             &.mdc-list-item {
                 color: var(--whiteColor);
-                
+
                 &:hover {
                     color: var(--daxaColor);
                 }
@@ -871,11 +871,11 @@
     // Mat Menu
     .mat-mdc-menu-panel {
         background-color: #1b232d !important;
-    
+
         .mat-mdc-menu-content {
             .mat-mdc-menu-item {
                 color: var(--whiteColor);
-                
+
                 &:hover {
                     color: var(--daxaColor);
                 }

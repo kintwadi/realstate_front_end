@@ -8,7 +8,7 @@ import { CustomizerSettingsService } from '../../customizer-settings/customizer-
 
 @Component({
     selector: 'app-header',
-    imports: [NgClass, MatMenuModule, MatButtonModule, RouterLink],
+    imports: [NgClass, MatMenuModule, MatButtonModule],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })

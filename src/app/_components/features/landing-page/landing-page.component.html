@@ -1,0 +1,104 @@
+<app-loader></app-loader>
+<!--loader end-->
+<!--  main   -->
+<div id="main">
+    <!--header-->
+    <app-main-header></app-main-header>
+    <div class="body-overlay fs-wrapper search-form-overlay close-search-form"></div>
+    <!--header-end-->
+    <!--warpper-->
+    <div class="wrapper">
+        <div class="content">
+            <!--section-->
+            <app-hero-slider></app-hero-slider>
+            <!--section-end-->
+            <!--container-->
+            <div class="container">
+                <app-property-grid></app-property-grid>
+            </div>
+            <!--container end-->
+            <app-city-carousel></app-city-carousel>
+            <!--main-content-->
+            <div class="main-content ms_vir_height">
+                <!--container -->
+                <app-why-choose-us></app-why-choose-us>
+
+                <!--container end-->
+                <app-how-it-works></app-how-it-works>
+                <!-- section   -->
+                <app-testimonials-slider></app-testimonials-slider>
+                <!-- section end  -->
+                <!--container-->
+                <div class="container">
+                    <div class="api-wrap">
+                        <div class="api-container">
+                            <div class="api-img">
+                                <img ngSrc="assets/images/api.png" alt="" class="respimg" height="521" width="700">
+                            </div>
+                            <div class="api-text">
+                                <h3>Our App Available Now</h3>
+                                <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus.
+                                    Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse
+                                    ctetuer adipiscing elit, sed diam nonu mmy nibh euismod tincidunt ut laoreet dolore
+                                    magna aliquam erat.</p>
+                                <div class="api-text-links">
+                                    <a href="#"><span> On Apple Store</span><i class="fa-brands fa-apple"></i></a>
+                                    <a href="#"><span> On Google PLay</span><i class="fa-brands fa-google-play"></i></a>
+                                </div>
+                            </div>
+                            <div class="api-wrap-bg" data-run="2">
+                                <div class="api-wrap-bg-container">
+                                    <span class="api-bg-pin"></span><span class="api-bg-pin"></span>
+                                    <div class="abs_bg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="to_top-btn-wrap">
+                        <div class="to-top to-top_btn"><span>Back to top</span> <i class="fa-solid fa-arrow-up"></i>
+                        </div>
+                        <div class="svg-corner svg-corner_white"
+                             style="top:0;left:  -40px; transform: rotate(-90deg)"></div>
+                        <div class="svg-corner svg-corner_white"
+                             style="top:0;right: -40px; transform: rotate(-180deg)"></div>
+                    </div>
+                </div>
+                <!--container end-->
+            </div>
+            <!--main-content end-->
+        </div>
+        <!--content  end-->
+        <!--main-footer-->
+        <div class="height-emulator"></div>
+        <app-main-footer></app-main-footer>
+        <!--main-footer end-->
+    </div>
+    <!--warpper end-->
+    <!--wish-list-wrap-->
+    <app-wish-list-popup></app-wish-list-popup>
+    <!--wish-list-wrap end-->
+    <!--register form -->
+    <app-auth-popup></app-auth-popup>
+    <!--register form end -->
+    <!-- progress-bar  -->
+    <div class="progress-bar-wrap">
+        <div class="progress-bar color-bg"></div>
+    </div>
+    <!-- progress-bar end -->
+    <!--map-modal -->
+    <div class="map-modal-wrap">
+        <div class="map-modal-wrap-overlay"></div>
+        <div class="map-modal-item">
+            <div class="map-modal-container fl-wrap">
+                <h3><span>Listing Title </span></h3>
+                <div class="map-modal-close"><i class="fa-regular fa-xmark"></i></div>
+                <div class="map-modal fl-wrap">
+                    <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
+                    <div class="scrollContorl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--map-modal end -->
+</div>
+<!-- Main end -->
