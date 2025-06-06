@@ -16,7 +16,6 @@ import {MainFooterComponent} from "./main-footer/main-footer.component";
   selector: 'app-landing-page',
     imports: [
         LoaderComponent,
-        MainHeaderComponent,
         HeroSliderComponent,
         PropertyGridComponent,
         CityCarouselComponent,
@@ -26,7 +25,8 @@ import {MainFooterComponent} from "./main-footer/main-footer.component";
         NgOptimizedImage,
         AuthPopupComponent,
         WishListPopupComponent,
-        MainFooterComponent
+        MainFooterComponent,
+        MainHeaderComponent
     ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'

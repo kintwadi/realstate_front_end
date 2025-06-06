@@ -1,14 +1,18 @@
-import { NgClass } from '@angular/common';
+import {NgClass, NgOptimizedImage} from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { Component, HostListener } from '@angular/core';
 import { ToggleService } from '../sidebar/toggle.service';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
+import {AuthPopupComponent} from "../../_components/features/landing-page/auth-popup/auth-popup.component";
+import {
+    WishListPopupComponent
+} from "../../_components/features/landing-page/wish-list-popup/wish-list-popup.component";
 
 @Component({
     selector: 'app-header',
-    imports: [NgClass, MatMenuModule, MatButtonModule],
+    imports: [MatMenuModule, MatButtonModule, NgOptimizedImage, AuthPopupComponent, WishListPopupComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })

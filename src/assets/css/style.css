@@ -3819,7 +3819,7 @@ nav li ul a:before , nav li ul a:after {
 	background: #000;
 }
 .geodir_save-btn {
-	position:absolute;
+	position:absolute !important;
 	right: 20px;
 	top: 30px;
 	z-index: 5;

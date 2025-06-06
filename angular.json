@@ -38,15 +38,20 @@
                             "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
                             "node_modules/remixicon/fonts/remixicon.css",
                             "src/styles.scss",
-                            "src/assets/css/plugins.css",
                             "src/assets/css/style.css",
+                            "src/assets/css/plugins.css",
+                            "src/assets/css/db-style.css",
                             "src/assets/css/dark-style.css"
                         ],
                         "scripts": [
                             "node_modules/apexcharts/dist/apexcharts.min.js",
                             "src/assets/js/jquery.min.js",
                             "src/assets/js/plugins.js",
-                            "src/assets/js/scripts.js"
+                            "src/assets/js/scripts.js",
+                            "src/assets/js/map-add.js",
+                            "src/assets/js/db-scripts.js",
+                            "src/assets/js/map-single.js",
+                            "src/assets/js/charts.js"
                         ]
                     },
                     "configurations": {
