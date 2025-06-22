@@ -1,0 +1,12 @@
+@if(type === 'simple'){
+  <app-property-box-one [propertyData]="propertyData" [tagClass]="tagClass" ></app-property-box-one>
+}
+@if(type === 'basic'){
+  <app-property-box-two [latestForRentData]="latestForRentData" [textColor]="textColor" [tagClass]="tagClass" [data]="data" [listView]="listView" [thumbnail]="thumbnail" [thumbnail_video]="thumbnail_video" [gridImages]="gridImages" ></app-property-box-two>
+}
+@if(type === 'classic'){
+  <app-property-box-three [propertyListingData]="propertyListingData" [tagClass]="tagClass" ></app-property-box-three>
+}
+@if(type === 'standard'){
+  <app-property-box-four [latestPropertyData]="latestPropertyData" [propertyListingDataClassic]="propertyListingDataClassic" [carousel]="carousel" ></app-property-box-four>
+}

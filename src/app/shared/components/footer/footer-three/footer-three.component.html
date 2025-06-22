@@ -1,0 +1,35 @@
+<footer [ngClass]="{'footer-dark footer-res' : footerDark == true, 'footer-light' : footerDark == false }">
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-md-6">
+          <app-contact-one [footerLogo]="footerLogo" [footerDark]="footerDark" [darkFooterLogo]="darkFooterLogo"></app-contact-one>
+        </div>
+        <div class="col-xl-2 col-md-3">
+          <app-about [icon]="true"></app-about>
+        </div>
+        <div class="col-xl-2 col-md-3">
+          <app-buy></app-buy>
+        </div>
+        <div class="col-xl-2 col-md-6">
+          <app-sell></app-sell>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <app-reland-estate></app-reland-estate>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-footer sub-footer-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-md-6">
+          <app-social-media></app-social-media>
+        </div>
+        <div class="col-xl-6 col-md-6 text-end">
+          <app-copy-right-one [heartIcon]="false"></app-copy-right-one>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

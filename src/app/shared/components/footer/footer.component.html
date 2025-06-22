@@ -1,0 +1,19 @@
+@if(data){
+  @if(data.footerStyle === 'simple'){
+    <app-footer-one [footerLogo]="data.footerLogo" [footerClass]="data.footerClass" [heartIcon]="data.heartIcon" [darkFooterLogo]="data.darkFooterLogo" [subFooterClass]="data.subFooterClass"></app-footer-one>
+  }@else if(data.footerStyle === 'basic'){
+    <app-footer-two [footerLogo]="data.footerLogo"></app-footer-two>
+  }@else if(data.footerStyle === 'classic'){
+    <app-footer-three [footerDark]="data.footerDark" [footerLogo]="data.footerLogo" [darkFooterLogo]="data.darkFooterLogo"></app-footer-three>
+  }
+  <!-- For Module Page Footer -->
+}@else {
+  @if(type === 'simple'){
+  <app-footer-one [footerLogo]="footerLogo" [footerClass]="footerClass" [heartIcon]="heartIcon" [darkFooterLogo]="darkFooterLogo" [subFooterClass]="subFooterClass"></app-footer-one>
+  }@else if(type === 'basic'){
+  <app-footer-two [footerLogo]="footerLogo"></app-footer-two>
+  }@else if(type === 'classic'){
+  <app-footer-three [footerDark]="footerDark" [footerLogo]="footerLogo" [darkFooterLogo]="darkFooterLogo"></app-footer-three>
+  }
+}
+

@@ -1,0 +1,5 @@
+@if(type === 'simple'){
+  <app-latest-blog-one [latestBlogData]="latestBlogData" [tagClass]="tagClass"></app-latest-blog-one>
+}@else if(type === 'basic'){
+  <app-latest-blog-two [latestBlogData]="latestBlogData"></app-latest-blog-two>
+}

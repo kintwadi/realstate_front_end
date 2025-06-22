@@ -1,0 +1,7 @@
+@if(type == 'simple'){
+  <app-featured-property-one [featuredProperty]="featuredProperty" [tagClass]="tagClass" ></app-featured-property-one>
+}@else if(type == 'basic'){
+  <app-featured-property-two [featuredProperty]="featuredProperty" [tagClass]="tagClass" ></app-featured-property-two >
+  }@else if(type == 'classic'){
+  <app-featured-property-three [featuredProperty]="featuredProperty"></app-featured-property-three>
+}

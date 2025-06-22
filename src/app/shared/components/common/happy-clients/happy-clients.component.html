@@ -1,0 +1,7 @@
+@if(type === 'simple'){
+  <app-happy-client-one [happyClientsData]="happyClientsData" [tagClass]="tagClass"></app-happy-client-one>
+}@else if(type === 'basic'){
+  <app-happy-client-two [happyClientsData]="happyClientsData" [tagClass]="tagClass"></app-happy-client-two>
+}@else if(type === 'classic'){
+  <app-happy-client-three [happyClientsData]="happyClientsData"></app-happy-client-three>
+}

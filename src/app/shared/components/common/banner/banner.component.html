@@ -1,0 +1,9 @@
+@if(type === 'simple'){
+  <app-banner-one [bannerData]="bannerData" [tagClass]="tagClass" [buttonClass]="buttonClass"></app-banner-one>
+}@else if(type === 'basic'){
+  <app-banner-two [bannerData]="bannerData" [tagClass]="tagClass"></app-banner-two>
+}@else if(type === 'classic'){
+  <app-banner-three [bannerData]="bannerData"></app-banner-three>
+}@else if(type === 'standard'){
+  <app-banner-four [bannerData]="bannerData"></app-banner-four>
+}

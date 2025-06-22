@@ -1,29 +1,21 @@
-import {Routes} from '@angular/router';
-import {AuthenticationComponent} from "./_components/authentication/authentication.component";
-import {SignInComponent} from "./_components/authentication/sign-in/sign-in.component";
-import {SignUpComponent} from "./_components/authentication/sign-up/sign-up.component";
-import {LandingPageComponent} from "./_components/features/landing-page/landing-page.component";
-import {AddPropertiesComponent} from "./_components/features/add-properties/add-properties.component";
+import { Routes } from '@angular/router';
+import { LayoutComponent } from './shared/components/layouts/layout/layout.component';
+import { content } from './shared/routes/routes';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
     {
-        path: 'authentication',
-        component: AuthenticationComponent,
-        children: [
-            {path: '', component: SignInComponent},
-            {path: 'sign-up', component: SignUpComponent},
-        ]
-    },
-
-    {
-        path: 'home',
-        component: LandingPageComponent,
-    },
-
-    {
-        path: 'add-property',
-        component: AddPropertiesComponent,
-    },
-
+        path: '',
+        redirectTo: 'theme/slider-filter-search',
+        pathMatch: 'full',
+      },
+      {
+        path: '',
+        component: LayoutComponent,
+        children: content
+      },
+      {
+        path: '**',
+        redirectTo: 'page/other-pages/404',
+        pathMatch: 'full'
+      }
 ];

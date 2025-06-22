@@ -1,0 +1,14 @@
+<app-breadcrumb [bgImage]="bgImage" [title]="title" [parent]="parent" [child]="child"></app-breadcrumb>
+
+<section class="portfolio-details">
+  <div class="container">
+    <app-about-project></app-about-project>
+    <div class="row portfolio-section zoom-gallery-multiple gy-md-4 gy-3 ratio_square" gallerize>
+      @for(images of imagesData | slice : 0:4; track images; let i = $index){
+        <div class="grid-item col-lg-3 col-sm-6">
+          <app-portfolio-details-images [imagesData]="images" [index]="i"></app-portfolio-details-images>
+        </div>
+      }
+    </div>
+  </div>
+</section>

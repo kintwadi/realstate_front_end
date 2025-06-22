@@ -1,0 +1,78 @@
+<app-breadcrumb [bgImage]="bgImage" [title]="title" [parent]="parent" [child]="child"></app-breadcrumb>
+
+<section class="pricing-section slick-between slick-shadow pricing-inner">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [type]="'basic'" [heading]="'pricing Plan'" [desc]="pricingDesc"></app-title>
+        <div class="pricing-slider">
+          <app-pricing-plan [pricingPlan]="pricingPlan" [type]="'simple'" [tagClass]="tagClass"></app-pricing-plan>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer-section banner-section layout2-bg slick-between offer-inner">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [type]="'basic'" [heading]="'Our New Offer'" [desc]="offerDesc" [textWhite]="true"></app-title>
+        <div class="offer-slider">
+          <app-new-offer [title]="offerTitle"></app-new-offer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banner-section new-property pricing-property">
+  <div class="container">
+    <div class="row ratio_landscape feature-section">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [type]="'basic'" [heading]="'Property of the day'" [desc]="propertyOfDayDesc"></app-title>
+        <div class="feature-wrap">
+          <app-property-of-day [propertyOfDay]="propertyOfDay"></app-property-of-day>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banner-section layout2-bg parallax-image">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        @for(data of bannerData; track data){
+          <div class="banner-2 ratio2_3">
+            <app-banner [bannerData]="data" [type]="'classic'"></app-banner>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe-section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        @for(data of bannerDataClassic; track data){
+          <app-banner [bannerData]="data" [type]="'standard'"></app-banner>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="small-section bg-light-blue arrow-gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="slide-3 brand-slider">
+          <app-brand [brandData]="brandData" [type]="'classic'"></app-brand>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

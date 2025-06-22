@@ -1,0 +1,69 @@
+<app-breadcrumb [bgImage]="bgImage" [title]="title" [parent]="parent" [child]="child"></app-breadcrumb>
+
+<section class="about-main ratio_36">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [type]="'basic'" [heading]="'About Us'" [desc]="aboutDesc" [descClass]="'font-roboto'"></app-title>
+        <div class="user-about">
+          <app-about-us1-details></app-about-us1-details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose ratio_40 service-section service-1 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [type]="'basic'" [heading]="'Why choose us'" [desc]="chooseUsDesc" [descClass]="'font-roboto'"></app-title>
+        <div class="row property-service column-space">
+          @for(data of whyChooseUsData; track data){
+            <div class="col-xl-4 col-md-6">
+              <app-why-choose-us [whyChooseUsData]="data"></app-why-choose-us>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-testimonial testimonial-client">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [heading]="'Our Happy Client'" [desc]="happyClientDesc" [type]="'basic'" [descClass]="'font-roboto'"></app-title>
+        <div class="testimonial-4">
+          <app-happy-clients [happyClientsData]="happyClientsData" [type]="'classic'"></app-happy-clients>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ratio2_1 bg-light blog-inner">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <app-title [titleClass]="'title-2'" [type]="'basic'" [heading]="'Latest Blog'" [desc]="blogDesc" [descClass]="'font-roboto'"></app-title>
+        <div class="blog-2 blog-grid">
+            <app-latest-blog [latestBlogData]="latestBlogData" [type]="'simple'" ></app-latest-blog>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="small-section brand-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="slide-2 brand-slider">
+          <app-brand [brandData]="brandData" [type]="'basic'"></app-brand>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<div [formGroup]="addressFormGroup" class="row gx-3">
+    <div class="form-group col-md-12">
+        <label>Address</label>
+        <input type="text" class="form-control" placeholder="Enter full address" formControlName="address"
+               [class.is-invalid]="f['address'].invalid && f['address'].touched">
+    </div>
+
+    <div class="form-group col-sm-4">
+        <label>City</label>
+        <input type="text" class="form-control" placeholder="City" formControlName="city"
+               [class.is-invalid]="f['city'].invalid && f['city'].touched">
+    </div>
+
+    <div class="form-group col-sm-4">
+        <label>State</label>
+        <input type="text" class="form-control" placeholder="State" formControlName="state"
+               [class.is-invalid]="f['state'].invalid && f['state'].touched">
+    </div>
+
+    <div class="form-group col-sm-4">
+        <label>Zip Code</label>
+        <input type="text" class="form-control" placeholder="Zip Code" formControlName="zipCode"
+               [class.is-invalid]="f['zipCode'].invalid && f['zipCode'].touched">
+    </div>
+</div>

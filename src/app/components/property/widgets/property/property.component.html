@@ -1,0 +1,5 @@
+@if(type == 'simple'){
+  <app-property-slider [propertyData]="propertyData"></app-property-slider>
+}@else if(type == 'basic'){
+  <app-property-tab [propertyData]="propertyData" [dataArray]="dataArray" [propertyDetailsData]="propertyDetailsData" ></app-property-tab>
+}

@@ -1,0 +1,10 @@
+<a href="javascript:void(0)" (click)="openLanguage()" (clickOutside)="languageOpen = false">
+  <app-feather-icons [icon]="'globe'"></app-feather-icons>
+</a>
+<ul class="nav-submenu" [ngClass]="{ open : languageOpen }" >
+  @for(language of languages; track language){
+    <li>
+      <a href="javascript:void(0)" (click)="changeLanguage(language.code)">{{ language.name }}</a>
+    </li>
+  }
+</ul>
