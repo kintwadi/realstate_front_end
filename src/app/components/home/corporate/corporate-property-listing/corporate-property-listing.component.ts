@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { latestForRent } from '../../../../shared/interface/property';
 import { PropertyService } from '../../../../shared/services/property.service';
 import { TitleComponent } from '../../../../shared/components/ui/title/title.component';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
     styleUrls: ['./corporate-property-listing.component.scss']
 })
 
-export class CorporatePropertyListingComponent {
+export class CorporatePropertyListingComponent implements OnInit{
 
   @Input() data: number = 0;
   @Input() class: string = '';

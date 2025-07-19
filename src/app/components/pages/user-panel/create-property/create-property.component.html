@@ -5,18 +5,23 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="sidebar-user sticky-cls">
-                    <div class="user-profile"><app-user-info></app-user-info></div>
-                    <div class="dashboard-list"><app-user-panel-side-menu [activeTab]="'create-property'"></app-user-panel-side-menu></div>
+                    <div class="user-profile">
+                        <app-user-info></app-user-info>
+                    </div>
+                    <div class="dashboard-list">
+                        <app-user-panel-side-menu [activeTab]="'create-property'"></app-user-panel-side-menu>
+                    </div>
                 </div>
             </div>
 
             <div class="col-lg-9">
                 <div class="dashboard-content">
                     <div class="create-tab" id="create-property">
-                        <div class="property-wizard common-card">// Scroll to top to show error message
+                        <div class="property-wizard common-card">
                             <div class="common-header"><h5>Create property</h5></div>
 
-                            <form class="create-property-form" [formGroup]="propertyForm" (ngSubmit)="onSubmit()" novalidate>
+                            <form class="create-property-form" [formGroup]="propertyForm" (ngSubmit)="onSubmit()"
+                                  novalidate>
                                 <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
                                 <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 
@@ -25,28 +30,58 @@
                                     <div class="row gx-3">
                                         <div class="form-group col-md-12">
                                             <label>Main Title <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" formControlName="mainTitle" [class.is-invalid]="f['mainTitle'].invalid && f['mainTitle'].touched">
-                                            <div *ngIf="f['mainTitle'].invalid && f['mainTitle'].touched" class="invalid-feedback"><span *ngIf="f['mainTitle'].errors?.['required']">Title is required.</span></div>
+                                            <input type="text" class="form-control" formControlName="mainTitle"
+                                                   [class.is-invalid]="f['mainTitle'].invalid && f['mainTitle'].touched">
+                                            <div *ngIf="f['mainTitle'].invalid && f['mainTitle'].touched"
+                                                 class="invalid-feedback"><span
+                                                    *ngIf="f['mainTitle'].errors?.['required']">Title is required.</span>
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label>Description <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" formControlName="description" rows="4" [class.is-invalid]="f['description'].invalid && f['description'].touched"></textarea>
-                                            <div *ngIf="f['description'].invalid && f['description'].touched" class="invalid-feedback"><span *ngIf="f['description'].errors?.['required']">Description is required.</span><span *ngIf="f['description'].errors?.['minlength']"> Must be at least 50 characters.</span></div>
+                                            <textarea class="form-control" formControlName="description" rows="4"
+                                                      [class.is-invalid]="f['description'].invalid && f['description'].touched"></textarea>
+                                            <div *ngIf="f['description'].invalid && f['description'].touched"
+                                                 class="invalid-feedback"><span
+                                                    *ngIf="f['description'].errors?.['required']">Description is required.</span><span
+                                                    *ngIf="f['description'].errors?.['minlength']"> Must be at least 50 characters.</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-sm-4"><label>Type <span class="text-danger">*</span></label><select class="form-select" formControlName="type"><option *ngFor="let t of propertyTypes" [value]="t">{{t}}</option></select></div>
-                                        <div class="form-group col-sm-4"><label>Category <span class="text-danger">*</span></label><select class="form-select" formControlName="category"><option *ngFor="let c of propertyCategories" [value]="c">{{c}}</option></select></div>
-                                        <div class="form-group col-sm-4"><label>Status <span class="text-danger">*</span></label><select class="form-select" formControlName="status"><option *ngFor="let s of propertyStatuses" [value]="s">{{s}}</option></select></div>
+                                        <div class="form-group col-sm-4"><label>Type <span class="text-danger">*</span></label><select
+                                                class="form-select" formControlName="type">
+                                            <option *ngFor="let t of propertyTypes" [value]="t">{{ t }}</option>
+                                        </select></div>
+                                        <div class="form-group col-sm-4"><label>Category <span
+                                                class="text-danger">*</span></label><select class="form-select"
+                                                                                            formControlName="category">
+                                            <option *ngFor="let c of propertyCategories" [value]="c">{{ c }}</option>
+                                        </select></div>
+                                        <div class="form-group col-sm-4"><label>Status <span
+                                                class="text-danger">*</span></label><select class="form-select"
+                                                                                            formControlName="status">
+                                            <option *ngFor="let s of propertyStatuses" [value]="s">{{ s }}</option>
+                                        </select></div>
                                         <div class="form-group col-sm-6">
                                             <label>Price ($) <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" formControlName="price" [class.is-invalid]="f['price'].invalid && f['price'].touched">
-                                            <div *ngIf="f['price'].invalid && f['price'].touched" class="invalid-feedback"><span *ngIf="f['price'].errors?.['required']">Price is required.</span><span *ngIf="f['price'].errors?.['min']"> Price must be positive.</span></div>
+                                            <input type="number" class="form-control" formControlName="price"
+                                                   [class.is-invalid]="f['price'].invalid && f['price'].touched">
+                                            <div *ngIf="f['price'].invalid && f['price'].touched"
+                                                 class="invalid-feedback"><span *ngIf="f['price'].errors?.['required']">Price is required.</span><span
+                                                    *ngIf="f['price'].errors?.['min']"> Price must be positive.</span>
+                                            </div>
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label>Area (sq ft) <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" formControlName="area" [class.is-invalid]="f['area'].invalid && f['area'].touched">
-                                            <div *ngIf="f['area'].invalid && f['area'].touched" class="invalid-feedback"><span *ngIf="f['area'].errors?.['required']">Area is required.</span><span *ngIf="f['area'].errors?.['min']"> Area must be positive.</span></div>
+                                            <input type="number" class="form-control" formControlName="area"
+                                                   [class.is-invalid]="f['area'].invalid && f['area'].touched">
+                                            <div *ngIf="f['area'].invalid && f['area'].touched"
+                                                 class="invalid-feedback"><span *ngIf="f['area'].errors?.['required']">Area is required.</span><span
+                                                    *ngIf="f['area'].errors?.['min']"> Area must be positive.</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-12"><label>Keywords (comma-separated)</label><input type="text" class="form-control" formControlName="keywords"></div>
+                                        <div class="form-group col-md-12"><label>Keywords
+                                            (comma-separated)</label><input type="text" class="form-control"
+                                                                            formControlName="keywords"></div>
                                     </div>
                                 </div>
 
@@ -55,38 +90,68 @@
                                     <div class="row gx-3">
                                         <div class="form-group col-md-12">
                                             <label>Address <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" formControlName="address" [class.is-invalid]="locationGroup.controls['address'].invalid && locationGroup.controls['address'].touched">
-                                            <div *ngIf="locationGroup.controls['address'].invalid && locationGroup.controls['address'].touched" class="invalid-feedback">Address is required.</div>
+                                            <input type="text" class="form-control" formControlName="address"
+                                                   [class.is-invalid]="locationGroup.controls['address'].invalid && locationGroup.controls['address'].touched">
+                                            <div *ngIf="locationGroup.controls['address'].invalid && locationGroup.controls['address'].touched"
+                                                 class="invalid-feedback">Address is required.
+                                            </div>
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label>City <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" formControlName="city" [class.is-invalid]="locationGroup.controls['city'].invalid && locationGroup.controls['city'].touched">
-                                            <div *ngIf="locationGroup.controls['city'].invalid && locationGroup.controls['city'].touched" class="invalid-feedback">City is required.</div>
+                                            <input type="text" class="form-control" formControlName="city"
+                                                   [class.is-invalid]="locationGroup.controls['city'].invalid && locationGroup.controls['city'].touched">
+                                            <div *ngIf="locationGroup.controls['city'].invalid && locationGroup.controls['city'].touched"
+                                                 class="invalid-feedback">City is required.
+                                            </div>
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label>State <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" formControlName="state" [class.is-invalid]="locationGroup.controls['state'].invalid && locationGroup.controls['state'].touched">
-                                            <div *ngIf="locationGroup.controls['state'].invalid && locationGroup.controls['state'].touched" class="invalid-feedback">State is required.</div>
+                                            <input type="text" class="form-control" formControlName="state"
+                                                   [class.is-invalid]="locationGroup.controls['state'].invalid && locationGroup.controls['state'].touched">
+                                            <div *ngIf="locationGroup.controls['state'].invalid && locationGroup.controls['state'].touched"
+                                                 class="invalid-feedback">State is required.
+                                            </div>
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label>Zip Code <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" formControlName="zipCode" [class.is-invalid]="locationGroup.controls['zipCode'].invalid && locationGroup.controls['zipCode'].touched">
-                                            <div *ngIf="locationGroup.controls['zipCode'].invalid && locationGroup.controls['zipCode'].touched" class="invalid-feedback">Zip Code is required.</div>
+                                            <input type="text" class="form-control" formControlName="zipCode"
+                                                   [class.is-invalid]="locationGroup.controls['zipCode'].invalid && locationGroup.controls['zipCode'].touched">
+                                            <div *ngIf="locationGroup.controls['zipCode'].invalid && locationGroup.controls['zipCode'].touched"
+                                                 class="invalid-feedback">Zip Code is required.
+                                            </div>
                                         </div>
-                                        <div class="form-group col-sm-6"><label>Latitude (Optional)</label><input type="text" class="form-control" formControlName="latitude"></div>
-                                        <div class="form-group col-sm-6"><label>Longitude (Optional)</label><input type="text" class="form-control" formControlName="longitude"></div>
+                                        <div class="form-group col-sm-6"><label>Latitude (Optional)</label><input
+                                                type="text" class="form-control" formControlName="latitude"></div>
+                                        <div class="form-group col-sm-6"><label>Longitude (Optional)</label><input
+                                                type="text" class="form-control" formControlName="longitude"></div>
                                     </div>
                                 </div>
 
                                 <div class="form-inputs">
                                     <h6>Features & Accommodation</h6>
                                     <div class="row gx-3">
-                                        <div class="form-group col-sm-3"><label>Bedrooms</label><input type="number" class="form-control" formControlName="bedrooms"></div>
-                                        <div class="form-group col-sm-3"><label>Bathrooms</label><input type="number" class="form-control" formControlName="bathrooms"></div>
-                                        <div class="form-group col-sm-3"><label>Parking Spots</label><input type="number" class="form-control" formControlName="parkingSpots"></div>
-                                        <div class="form-group col-sm-3"><label>Website</label><input type="url" class="form-control" formControlName="website"></div>
-                                        <div class="form-group col-sm-6"><label>Max Adults</label><input type="number" class="form-control" formControlName="maxAdultsAccommodation"></div>
-                                        <div class="form-group col-sm-6"><label>Max Children</label><input type="number" class="form-control" formControlName="maxChildrenAccommodation"></div>
+                                        <div class="form-group col-sm-3"><label>Bedrooms</label><input type="number"
+                                                                                                       class="form-control"
+                                                                                                       formControlName="bedrooms">
+                                        </div>
+                                        <div class="form-group col-sm-3"><label>Bathrooms</label><input type="number"
+                                                                                                        class="form-control"
+                                                                                                        formControlName="bathrooms">
+                                        </div>
+                                        <div class="form-group col-sm-3"><label>Parking Spots</label><input
+                                                type="number" class="form-control" formControlName="parkingSpots"></div>
+                                        <div class="form-group col-sm-3"><label>Website</label><input type="url"
+                                                                                                      class="form-control"
+                                                                                                      formControlName="website">
+                                        </div>
+                                        <div class="form-group col-sm-6"><label>Max Adults</label><input type="number"
+                                                                                                         class="form-control"
+                                                                                                         formControlName="maxAdultsAccommodation">
+                                        </div>
+                                        <div class="form-group col-sm-6"><label>Max Children</label><input type="number"
+                                                                                                           class="form-control"
+                                                                                                           formControlName="maxChildrenAccommodation">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -95,26 +160,123 @@
                                     <div class="row gx-3">
                                         <div class="form-group col-md-6">
                                             <label>Contact Phone</label>
-                                            <input type="tel" class="form-control" formControlName="contactPhone" [class.is-invalid]="f['contactPhone'].invalid && f['contactPhone'].touched">
-                                            <div *ngIf="f['contactPhone'].invalid && f['contactPhone'].touched" class="invalid-feedback">Please enter a valid phone number.</div>
+                                            <input type="tel" class="form-control" formControlName="contactPhone"
+                                                   [class.is-invalid]="f['contactPhone'].invalid && f['contactPhone'].touched">
+                                            <div *ngIf="f['contactPhone'].invalid && f['contactPhone'].touched"
+                                                 class="invalid-feedback">Please enter a valid phone number.
+                                            </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Contact Email</label>
-                                            <input type="email" class="form-control" formControlName="contactEmail" [class.is-invalid]="f['contactEmail'].invalid && f['contactEmail'].touched">
-                                            <div *ngIf="f['contactEmail'].invalid && f['contactEmail'].touched" class="invalid-feedback">Please enter a valid email address.</div>
+                                            <input type="email" class="form-control" formControlName="contactEmail"
+                                                   [class.is-invalid]="f['contactEmail'].invalid && f['contactEmail'].touched">
+                                            <div *ngIf="f['contactEmail'].invalid && f['contactEmail'].touched"
+                                                 class="invalid-feedback">Please enter a valid email address.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-inputs"><h6>Amenities</h6><div class="row"><div class="col-sm-4" *ngFor="let amenity of availableAmenities"><label class="d-block"><input class="checkbox_animated" type="checkbox" [value]="amenity" (change)="onAmenityChange($event)"> {{ amenity }}</label></div></div></div>
+                                <div class="form-inputs"><h6>Amenities</h6>
+                                    <div class="row">
+                                        <div class="col-sm-4" *ngFor="let amenity of availableAmenities"><label
+                                                class="d-block"><input class="checkbox_animated" type="checkbox"
+                                                                       [value]="amenity"
+                                                                       (change)="onAmenityChange($event)"> {{ amenity }}</label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div class="form-inputs"><div class="d-flex justify-content-between align-items-center mb-3"><h6>Nearby Places</h6><button type="button" class="btn btn-sm btn-secondary" (click)="addNearbyPlace()">+ Add Place</button></div><div formArrayName="nearbyPlaces"><div *ngFor="let place of nearbyPlaces.controls; let i=index" [formGroupName]="i" class="row g-2 align-items-center mb-2"><div class="col-md-3"><input type="text" class="form-control" placeholder="Place Type *" formControlName="placeType"></div><div class="col-md-4"><input type="text" class="form-control" placeholder="Name *" formControlName="name"></div><div class="col-md-3"><input type="text" class="form-control" placeholder="Distance *" formControlName="distance"></div><div class="col-md-2"><button type="button" class="btn btn-sm btn-danger w-100" (click)="removeNearbyPlace(i)">Remove</button></div></div></div></div>
+                                <div class="form-inputs">
+                                    <div class="d-flex justify-content-between align-items-center mb-3"><h6>Nearby
+                                        Places</h6>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary btn-pill"
+                                                (click)="addNearbyPlace()"><i class="fa fa-plus-circle"></i> Add Place
+                                        </button>
+                                    </div>
+                                    <div formArrayName="nearbyPlaces">
+                                        <div *ngFor="let place of nearbyPlaces.controls; let i=index"
+                                             [formGroupName]="i" class="row g-2 align-items-center mb-2">
+                                            <div class="col-md-3"><input type="text" class="form-control"
+                                                                         placeholder="Place Type *"
+                                                                         formControlName="placeType"></div>
+                                            <div class="col-md-4"><input type="text" class="form-control"
+                                                                         placeholder="Name *" formControlName="name">
+                                            </div>
+                                            <div class="col-md-3"><input type="text" class="form-control"
+                                                                         placeholder="Distance *"
+                                                                         formControlName="distance"></div>
+                                            <div class="col-md-2" style="cursor: pointer">
+                                                <i class="fa fa-trash text-danger"
+                                                   (click)="removeNearbyPlace(i)">
+                                                </i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div class="form-inputs"><div class="d-flex justify-content-between align-items-center mb-3"><label class="form-check-label" for="enableAccordion">Enable Accordion Widget</label><div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="enableAccordion" formControlName="enableAccordionWidget"></div></div><ng-container *ngIf="f['enableAccordionWidget'].value"><div class="d-flex justify-content-between align-items-center my-3"><h6>Accordion Items</h6><button type="button" class="btn btn-sm btn-secondary" (click)="addAccordionItem()">+ Add Item</button></div><div formArrayName="accordionItems"><div *ngFor="let item of accordionItems.controls; let i=index" [formGroupName]="i" class="row g-2 align-items-center mb-2"><div class="col-md-11"><input type="text" class="form-control mb-1" placeholder="Title *" formControlName="title"><textarea class="form-control" placeholder="Details *" formControlName="details" rows="2"></textarea></div><div class="col-md-1"><button type="button" class="btn btn-sm btn-danger" (click)="removeAccordionItem(i)">Remove</button></div></div></div></ng-container></div>
+                                <div class="form-inputs">
+                                    <div class="d-flex justify-content-between align-items-center mb-3"><label
+                                            class="form-check-label" for="enableAccordion">Enable Accordion
+                                        Widget</label>
+                                        <div class="form-check form-switch"><input class="form-check-input"
+                                                                                   type="checkbox" id="enableAccordion"
+                                                                                   formControlName="enableAccordionWidget">
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="f['enableAccordionWidget'].value">
+                                        <div class="d-flex justify-content-between align-items-center my-3"><h6>
+                                            Accordion Items</h6>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary btn-pill"
+                                                    (click)="addAccordionItem()"><i class="fa fa-plus-circle"></i> Add
+                                                Item
+                                            </button>
+                                        </div>
+                                        <div formArrayName="accordionItems">
+                                            <div *ngFor="let item of accordionItems.controls; let i=index"
+                                                 [formGroupName]="i" class="row g-2 align-items-center mb-2">
+                                                <div class="col-md-11"><input type="text" class="form-control mb-1"
+                                                                              placeholder="Title *"
+                                                                              formControlName="title"><textarea
+                                                        class="form-control" placeholder="Details *"
+                                                        formControlName="details" rows="2"></textarea></div>
+                                                <div class="col-md-1" style="cursor: pointer">
+                                                    <i class="fa fa-trash text-danger"
+                                                       (click)="removeAccordionItem(i)">
+                                                    </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
 
-                                <div class="form-inputs"><h6>Advanced Settings</h6><div class="row"><div class="col-md-4"><label class="d-block"><input class="checkbox_animated" type="checkbox" formControlName="showSimilarProperties"> Show Similar Properties</label></div><div class="col-md-4"><label class="d-block"><input class="checkbox_animated" type="checkbox" formControlName="showPriceChangeDynamics"> Show Price Dynamics</label></div><div class="col-md-4"><label class="d-block"><input class="checkbox_animated" type="checkbox" formControlName="showGoogleMaps"> Show Google Maps</label></div></div></div>
+                                <div class="form-inputs"><h6>Advanced Settings</h6>
+                                    <div class="row">
+                                        <div class="col-md-4"><label class="d-block"><input class="checkbox_animated"
+                                                                                            type="checkbox"
+                                                                                            formControlName="showSimilarProperties">
+                                            Show Similar Properties</label></div>
+                                        <div class="col-md-4"><label class="d-block"><input class="checkbox_animated"
+                                                                                            type="checkbox"
+                                                                                            formControlName="showPriceChangeDynamics">
+                                            Show Price Dynamics</label></div>
+                                        <div class="col-md-4"><label class="d-block"><input class="checkbox_animated"
+                                                                                            type="checkbox"
+                                                                                            formControlName="showGoogleMaps">
+                                            Show Google Maps</label></div>
+                                    </div>
+                                </div>
 
-                                <div class="text-end mt-4"><button type="submit" class="btn btn-gradient color-2 btn-pill" [disabled]="!propertyForm.valid || isLoading"><span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> {{ isLoading ? 'Submitting...' : 'Add property' }}</button></div>
+                                <div class="text-end mt-4">
+                                    <button type="submit" class="btn btn-gradient color-2 btn-pill"
+                                            [disabled]="!propertyForm.valid || isLoading">
+                                        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                                              aria-hidden="true">
+                                        </span>
+                                        <i *ngIf="!isLoading" class="fa fa-paper-plane"></i>
+                                        {{ isLoading ? 'Creating...' : 'Create property' }}
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>

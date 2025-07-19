@@ -151,7 +151,7 @@ export class CreatePropertyComponent implements OnInit {
                 if (res.success) {
                     this.successMessage = `Property "${res.data.mainTitle}" created successfully! Redirecting...`;
                     this.propertyForm.reset();
-                    setTimeout(() => this.router.navigate(['/']), 2000);
+                    setTimeout(() => this.router.navigate(['/page/user/my-listing']), 2000);
                 } else {
                     this.errorMessage = res.error?.message || 'An unknown error occurred.';
                 }
