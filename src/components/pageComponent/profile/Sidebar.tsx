@@ -100,6 +100,7 @@ export default function ProfileSidebar() {
 
   const logoutButton = () => (
     <Button
+      onClick={() => logout("Logout successful!")}
       variant="default"
       className="w-full rounded-[10px] py-6 mt-2 bg-secondary hover:bg-gray-100 hover:text-black uppercase  hover:shadow-inner border border-default hover:border-default"
     >

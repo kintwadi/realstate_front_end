@@ -18,6 +18,7 @@ import { STORAGE_KEYS } from "@/lib/localstorage/localstorage.keys";
 import { SignUpSchema } from "@/lib/validation/registerForm.validation";
 import { localStorageUtils } from "@/lib/localstorage";
 import { clientCookies } from "@/lib/cookies";
+import { access } from "fs";
 
 interface UserContextType {
   user: User | null;
@@ -90,6 +91,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
         clientCookies.set(STORAGE_KEYS.ACCESS_TOKEN, accessToken);
         clientCookies.set(STORAGE_KEYS.REFRESH_TOKEN, refreshToken);
 
+        // console.log(clientCookies.get(STORAGE_KEYS.ACCESS_TOKEN));
+        // console.log(clientCookies.get(STORAGE_KEYS.REFRESH_TOKEN));
+
         // setIsAuthenticated(true);
         setSuccess(successMessage);
         toast.success(successMessage);
@@ -145,8 +149,12 @@ export function UserProvider({ children }: { children: ReactNode }) {
       setError(null);
       setSuccess(null);
 
+      const accessToken = localStorageUtils.get(STORAGE_KEYS.ACCESS_TOKEN);
+      const refreshToken = localStorageUtils.get(STORAGE_KEYS.REFRESH_TOKEN);
+
       try {
-        const response = await apiPost<unknown>(API_URLS.auth.logout(), {});
+        const response = await apiPost<any>(API_URLS.auth.logout(), { accessToken, refreshToken });
+
         if (response.error) {
           const errorMessage = response.error.message || "Logout failed";
           setError(errorMessage);
@@ -155,13 +163,22 @@ export function UserProvider({ children }: { children: ReactNode }) {
           return;
         }
 
-        setUser(null);
-        setIsAuthenticated(false);
-        setSuccess(successMessage);
-        toast.success(successMessage);
-        localStorageUtils.delete(STORAGE_KEYS.ACCESS_TOKEN);
-        localStorageUtils.delete(STORAGE_KEYS.REFRESH_TOKEN);
-        router.push("/login");
+        if (response && response?.data?.success) {
+          setUser(null);
+          setIsAuthenticated(false);
+          setSuccess(successMessage);
+          toast.success(successMessage);
+
+          localStorageUtils.delete(STORAGE_KEYS.ACCESS_TOKEN);
+          localStorageUtils.delete(STORAGE_KEYS.REFRESH_TOKEN);
+
+          clientCookies.delete(STORAGE_KEYS.ACCESS_TOKEN);
+          clientCookies.delete(STORAGE_KEYS.REFRESH_TOKEN);
+
+          router.push("/");
+
+          return;
+        }
       } catch (err) {
         const errorMessage = "An unexpected error occurred";
         setError(errorMessage);
@@ -201,11 +218,11 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
       // Currently api response is not consistent, thats why this check.
       if (response?.data?.success) {
-        console.log({ response });
+        // console.log({ response });
         setUser(response.data!.data!);
         setIsAuthenticated(true);
         setSuccess(successMessage);
-        toast.success(successMessage);
+        // toast.success(successMessage);
       }
     } catch (err) {
       const errorMessage = "An unexpected error occurred";

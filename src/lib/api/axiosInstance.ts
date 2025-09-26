@@ -3,7 +3,7 @@
 // Includes support for AbortController via signal and a 401 error handler.
 
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
-import { BASE_URL } from "./apiUrls";
+import { API_URLS, BASE_URL } from "./apiUrls";
 import { STORAGE_KEYS } from "../localstorage/localstorage.keys";
 import { localStorageUtils } from "../localstorage";
 
@@ -31,43 +31,94 @@ axiosInstance.interceptors.request.use(
   }
 );
 
+// Flag to avoid multiple refresh requests at once
+let isRefreshing = false;
+let failedQueue: {
+  resolve: (value?: unknown) => void;
+  reject: (error?: unknown) => void;
+}[] = [];
+
+const processQueue = (error: unknown, token: string | null = null) => {
+  failedQueue.forEach((prom) => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token);
+    }
+  });
+  failedQueue = [];
+};
+
 // Response Interceptor: Handle 401 errors (e.g., redirect to login or refresh token)
 axiosInstance.interceptors.response.use(
-  (response: AxiosResponse) => {
-    return response;
-  },
+  (response: AxiosResponse) => response,
   async (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      // Custom 401 handler: e.g., logout, redirect to login, or refresh token
-      // console.error("Unauthorized (401): Redirecting to login...");
+    const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 
-      // Example: Attempt token refresh (implement your logic)
-      // const refreshToken = localStorage.getItem('refreshToken');
-      // if (refreshToken) {
-      //   try {
-      //     const refreshResponse = await axios.post(API_URLS.auth.refreshToken(), { refreshToken });
-      //     localStorage.setItem('accessToken', refreshResponse.data.accessToken);
-      //     // Retry original request
-      //     return axiosInstance(error.config as InternalAxiosRequestConfig);
-      //   } catch (refreshError) {
-      //     // Refresh failed: Logout
-      //     localStorage.removeItem('accessToken');
-      //     localStorage.removeItem('refreshToken');
-      //     if (typeof window !== 'undefined') {
-      //       window.location.href = '/login'; // Redirect to login page
-      //     }
-      //   }
-      // } else {
-      //   // No refresh token: Direct logout
-      //   localStorage.removeItem('accessToken');
-      //   if (typeof window !== 'undefined') {
-      //     window.location.href = '/login';
-      //   }
-      // }
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
 
-      // For now, just reject with a message (customize as needed)
-      return Promise.reject(error);
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (!refreshToken) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+
+        if (typeof window !== "undefined") {
+          window.location.href = "/login";
+        }
+
+        return Promise.reject(error);
+      }
+
+      if (isRefreshing) {
+        // Queue the request until refresh is done
+        return new Promise((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
+        })
+          .then((token) => {
+            if (token) {
+              originalRequest.headers.Authorization = `Bearer ${token}`;
+            }
+            return axiosInstance(originalRequest);
+          })
+          .catch((err) => Promise.reject(err));
+      }
+
+      isRefreshing = true;
+
+      try {
+        // Call refresh endpoint
+        const refreshResponse = await axios.get(API_URLS.auth.refreshToken(), {
+          headers: { Authorization: `Bearer ${refreshToken}` },
+        });
+
+        const newAccessToken = refreshResponse.data.accessToken;
+        const newRefreshToken = refreshResponse.data.refreshToken;
+
+        localStorage.setItem("accessToken", newAccessToken);
+        localStorage.setItem("refreshToken", newRefreshToken);
+
+        axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${newAccessToken}`;
+        processQueue(null, newAccessToken);
+
+        // Retry the failed request
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        return axiosInstance(originalRequest);
+      } catch (refreshError) {
+        processQueue(refreshError, null);
+
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+
+        if (typeof window !== "undefined") {
+          window.location.href = "/login";
+        }
+        return Promise.reject(refreshError);
+      } finally {
+        isRefreshing = false;
+      }
     }
+
     return Promise.reject(error);
   }
 );
