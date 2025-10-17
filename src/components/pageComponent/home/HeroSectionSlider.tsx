@@ -84,45 +84,6 @@ const HeroSection = () => {
               {slideData[activeSlide].cta}
             </button>
           </div>
-
-          {/* Right Form */}
-          <div className="hidden items-center justify-center p-2 backdrop-blur-2xl rounded-2xl lg:flex">
-            <div className="w-full min-w-[450px] rounded-2xl bg-white p-6">
-              <h2 className="mb-6 text-2xl font-bold text-gray-800">Get Started</h2>
-              <form className="space-y-4">
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-700">Your Name</label>
-                  <input
-                    type="text"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-700">Email Address</label>
-                  <input
-                    type="email"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-700">Message</label>
-                  <textarea
-                    rows={4}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="How can we help you?"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white transition-all hover:bg-blue-700"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
 

@@ -2,10 +2,27 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ContextWrapper } from "@/contexts/wrapper.context";
 import Header from "@/components/common/header";
+import Footer from "@/components/common/footer";
 import { Toaster } from "@/components/ui/sonner";
 // import { Toaster } from "sonner";
 
 import "./globals.css";
+import "./template-styles.css";
+import "swiper/css";
+import "swiper/css/navigation";
+
+// FontAwesome CDN for icons
+const FontAwesomeCDN = () => (
+  <>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossOrigin="anonymous"
+      referrerPolicy="no-referrer"
+    />
+  </>
+);
 
 const PoppinsFont = Poppins({
   variable: "--font-poppins",
@@ -28,11 +45,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>Imovel API Norman Dev</title>
+        <meta name="description" content="Real estate platform" />
+        <FontAwesomeCDN />
+      </head>
       <body className={`${PoppinsFont.variable}  antialiased`}>
         <Toaster position="top-right" duration={2000} richColors />
         <ContextWrapper>
           <Header />
           {children}
+          <Footer />
         </ContextWrapper>
       </body>
     </html>

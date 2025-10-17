@@ -27,6 +27,7 @@ import { IoMdClose } from "react-icons/io";
 import { FiHeart } from "react-icons/fi";
 import { homeUrl } from "@/constant/appUrl.constant";
 import { profileUrl } from "../../../constant/appUrl.constant";
+import { useScrollBehavior } from "@/hooks/useScrollBehavior";
 
 const Header = () => {
   const [searchVisible, setSearchVisible] = useState<boolean>(false);
@@ -35,6 +36,7 @@ const Header = () => {
 
   const { isAuthenticated, user } = useUserContext();
   const { isMd, isSm } = useBreakpoint();
+  const { isHeaderVisible } = useScrollBehavior();
 
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
@@ -47,7 +49,11 @@ const Header = () => {
   }, [isAuthenticated]);
 
   return (
-    <header className=" bg-white-300  h-24 flex flex-row items-center  border-b shadow-100">
+    <header 
+      className={`bg-white-300 h-24 flex flex-row items-center border-b shadow-100 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
+        isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       <Container className="">
         <div className=" flex flex-row items-center justify-between w-full">
           {/* left side */}
